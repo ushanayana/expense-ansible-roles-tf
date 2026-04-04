@@ -10,6 +10,12 @@
     name: common
     tasks_from: app-pre-req
 
+
+- name: validate nginx configuration
+  ansible.builtin.command: nginx -t
+  register: nginx_test
+  changed_when: false    
+
 # if there is change in configuration only, then you need to restart nginx
 - name: copy backend conf
   ansible.builtin.template:
@@ -17,11 +23,6 @@
     dest: /etc/nginx/default.d/expense.conf
   notify:
   - restart nginx
-
-- name: validate nginx configuration
-  ansible.builtin.command: nginx -t
-  register: nginx_test
-  changed_when: false
 
 
 - name: start and enable nginx
