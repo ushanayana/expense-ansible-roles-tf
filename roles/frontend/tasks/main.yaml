@@ -3,6 +3,11 @@
     name: nginx
     state: latest
 
+- name: start and enable nginx
+  ansible.builtin.service:
+    name: nginx
+    state: started
+    enabled: yes  
 
 
 - name: run app pre-requisites
@@ -25,11 +30,6 @@
   - restart nginx
 
 
-- name: start and enable nginx
-  ansible.builtin.service:
-    name: nginx
-    state: started
-    enabled: yes  
 
 # - name: restart nginx
 #   ansible.builtin.service:
