@@ -7,46 +7,22 @@
   ansible.builtin.service:
     name: nginx
     state: started
-    enabled: yes  
-
+    enabled: yes
 
 - name: run app pre-requisites
   ansible.builtin.import_role:
     name: common
     tasks_from: app-pre-req
 
-
-- name: validate nginx configuration
-  ansible.builtin.command: nginx -t
-  register: nginx_test
-  changed_when: false    
-
 # if there is change in configuration only, then you need to restart nginx
 - name: copy backend conf
   ansible.builtin.template:
     src: expense.conf.j2
-    dest: /etc/nginx/default.d/expense.conf.j2
+    dest: /etc/nginx/default.d/expense.conf
   notify:
   - restart nginx
-
-
 
 # - name: restart nginx
 #   ansible.builtin.service:
 #     name: nginx
 #     state: restarted
-
-#!/bin/bash
-# set -e  # stop on error
-
-# echo "Installing nginx..."
-# sudo yum install -y nginx
-
-# echo "Starting nginx..."
-# sudo systemctl start nginx
-
-# echo "Checking config..."
-# sudo nginx -t
-
-# echo "Restarting nginx..."
-# sudo systemctl restart nginx
