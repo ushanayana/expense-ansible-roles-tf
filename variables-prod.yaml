@@ -1,0 +1,5 @@
+login_user: root 
+login_host: db-prod.daws78s.shop
+login_password: ExpenseApp1
+DB_HOST: db-prod.daws78s.shop
+BACKEND_API_URL: backend.app-prod.daws78s.shop
