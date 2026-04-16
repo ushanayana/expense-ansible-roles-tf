@@ -1,3 +1,3 @@
-#DB_HOST: db.daws78s.shop
+DB_HOST: db-dev.daws78s.shop
 app_location: /app 
 component: backend 
