@@ -1,3 +1,3 @@
-BACKEND_API_URL: backend.app-dev.daws78s.shop
+BACKEND_API_URL: backend-dev.daws78s.shop
 component: frontend
 app_location: /usr/share/nginx/html
